@@ -1,0 +1,17 @@
+66010914021 สุรีรัตน์ เกษกัน http://10.119.195.195/g/
+
+SELECT SUM(`p_amount`) AS total FROM `popsupermarket` ;
+ราคาขายเท่าไร
+SELECT SUM(`p_amount`) AS total FROM `popsupermarket` WHERE `p_country`='Sweden';
+
+SELECT SUM(`p_amount`) AS total FROM `popsupermarket` WHERE `p_country`='Sweden' AND `p_category`LIKE'%Veg%';
+
+SELECT `p_country` FROM `popsupermarket` WHERE 1;
+ชื่อตาราง
+SELECT `p_country` FROM `popsupermarket` GROUP BY `p_country`;
+ชื่อตารางประเทศและยอดขาย
+SELECT `p_country`,SUM(`p_amount`)AS total FROM `popsupermarket` GROUP BY `p_country`;
+
+SELECT `p_country`,SUM(`p_amount`)AS total FROM `popsupermarket` GROUP BY `p_country`ORDER BY total DESC;
+
+สร้าง	
