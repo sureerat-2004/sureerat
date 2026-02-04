@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2026 at 10:56 AM
+-- Generation Time: Feb 04, 2026 at 11:22 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,8 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`a_id`, `a_name`, `a_username`, `a_password`) VALUES
-(1, 'สุรีรัตน์ เกษกัน', 'admin1', '1234'),
-(3, 'สุรีรัตน์', 'admin2', '4321');
+(1, 'สุรีรัตน์ เกษกัน', 'admin1', '$2y$10$auCUEVHADMyNMDohQVe5ouw3t7g11hxj8JZrjsQOBJXbRkPgGXUAa'),
+(3, 'สุรีรัตน์', 'admin2', '$2y$10$DMHA6P5bKcASxeJkUibo9erBLQUq7zLJN1wiDXruTOF3np0BLCVQu');
 
 --
 -- Indexes for dumped tables
