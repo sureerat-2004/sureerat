@@ -11,8 +11,8 @@
 <body>
 <h1>สุรีรัตน์ เกษกัน (เตย)</h1>
 <?php
-	echo $_SESSION['nane'] = "สุรีรัตน์ เกษกัน";
-	echo $_SESSION['nickname'] = "เตย";
+	echo $_SESSION['nane'] ."<br>";
+	echo $_SESSION['nickname'] ."<br>";
 	echo $_SESSION['p1'] = "โซฟา";
 	echo $_SESSION['p2'] = "ห่วงยาง";
 	
