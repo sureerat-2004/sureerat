@@ -16,7 +16,7 @@ Password <input type="password"name="aped" required><br>
 
 
 <?php
-if(isset($_POST['Sudmit'])) {
+if(isset($_POST['Submit'])) {
     include_once("connectdb.php");
     $sql = "SELECT * FROM admin WHERE a_username='{$_POST['auser']}'AND a_password='{$_POST['auser']}'LIMIT 1";
     $rs = mysqli_query($conn, $sql);

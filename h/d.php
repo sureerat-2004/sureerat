@@ -8,7 +8,7 @@
 <title>สุรีรัตน์ เกษกัน (เตย)</title>
 </head>
 
-<body>
+<body>s
 <h1>d.php</h1>
 <?php
 	echo $_SESSION['nane'] ."<br>";
