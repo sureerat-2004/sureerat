@@ -17,7 +17,7 @@
 if(isset($_POST['Submit'])){
     include_once("connectdb.php");
     $rname = $_POST['rname'];
-    $sql2 = "INSERT INTO r_regions (r_id, r_name) VALUES (NULL, '{$rname}')";
+    $sql2 = "INSERT INTO regions (r_id, r_name) VALUES (NULL, '{$rname}')";
     mysqli_query($conn, $sql2) or die ("เพิ่มข้อมูลไม่ได้");
 }
 ?>
@@ -29,7 +29,7 @@ if(isset($_POST['Submit'])){
     </tr>
 <?php 
 include_once("connectdb.php");
-$sql = "SELECT * FROM r_regions";
+$sql = "SELECT * FROM regions";
 $rs = mysqli_query($conn, $sql);
 while ($data = mysqli_fetch_array($rs)){
 ?>
