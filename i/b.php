@@ -65,17 +65,12 @@ if(isset($_POST['Submit'])){
     while ($data = mysqli_fetch_array($rs)){
 ?>
     <tr>
-        <td align="center"><?php echo $data['p_id'];?></td>
+        <td><?php echo $data['p_id']; ?></td>
         <td><?php echo $data['p_name'];?></td>
         <td><?php echo $data['r_name'];?></td>
-        <td align="center">
-            <img src="images/<?php echo $data['p_id'];?>.<?php echo $data['p_ext'];?>" width="140">
-        </td>
-        <td width="80" align="center">
-            <a href="delete_province.php?id=<?php echo $data['p_id']; ?>&ext=<?php echo $data['p_ext'];?>" onClick="return confirm('ยืนยันการลบ?');">
-                ลบข้อมูล
-            </a>
-        </td>
+        <td><img src="img/<?php echo $data['p_id']; ?>.<?php echo $data['p_ext']; ?>" width="80"></td>
+        <td width="80" align="center"><a href="delete_province.php?id=<?php echo $data['p_id']; ?>$ext=<?php echo $data['p_ext'];?>"onClick="return confirm('ยืนยันการลบ?');"><img src="images/delete.jpg" width="80"></a></td>
+
     </tr>
 <?php } ?>
 </table>
