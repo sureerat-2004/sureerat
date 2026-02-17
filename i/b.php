@@ -47,7 +47,13 @@ if(isset($_POST['Submit'])){
         <th>รูป</th>
         <th>ลบ</th>
     </tr>
-<?php
+    <?php
+include_once("connectdb.php");
+$sql = "SELECT * FROM `provinces`";
+$rs = mysqli_query($conn, $sql);
+while ($data = mysqli_fetch_array($rs)){
+
+?>
 include_once("connectdb.php");
 $sql = "SELECT * FROM `provinces`AS pINNER JOIN `regions` AS r ON p.r_id=r.r_id";
 $rs = mysqli_query($conn, $sql);
