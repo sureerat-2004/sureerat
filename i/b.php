@@ -45,7 +45,7 @@ if(isset($_POST['Submit'])){
     //var_dump($sql2);exit;
     $pid = mysqli_insert_id($conn);
     //copy($_FILES['pimage']['tmp_name'],"img/".$pid.".".$ext);
-    move_uploaded_file($_FILES['pimage']['tmp_name'],"img/".$pid.".".$ext);
+    move_uploaded_file($_FILES['pimage']['tmp_name'],"images/".$pid.".".$ext);
 }
 ?>
 
