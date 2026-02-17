@@ -33,7 +33,7 @@ if(isset($_POST['Submit'])){
     $ext = pathinfo($_FILES['pimage']['name'],PATHINFO_EXTENSION);
     $rid = $_POST['rid'];
 
-    $sql2= "INSERT INTO `r_regions` (`r_id`, `r_name`) VALUES (NULL,'{$pname}' ,'{$ext}','{$rid}')";
+    $sql2= "INSERT INTO `r_regions` (`r_id`, `r_name`) VALUES (NULL,'{$pname}' ,'{$ext}' ,'{$rid}')";
     mysqli_query($conn, $sql2) or die ('เพิ่มข้อมูลไม่ได้');
     $qid = mysqli_insert_id($conn);
     copy($_FILES['pimage']['tmp_name'],"images/".$qid.".".$ext);
