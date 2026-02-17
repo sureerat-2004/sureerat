@@ -48,7 +48,7 @@ if(isset($_POST['Submit'])){
 
     $pid = mysqli_insert_id($conn);
     // ตรวจสอบโฟลเดอร์ปลายทางว่าชื่อ images หรือ img (แก้ให้ตรงกับตอนแสดงผล)
-    move_uploaded_file($_FILES['pimage']['tmp_name'], "img/".$pid.".".$ext);
+    move_uploaded_file($_FILES['pimage']['tmp_name'], "images/".$pid.".".$ext);
 }
 ?>
 
