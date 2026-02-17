@@ -72,7 +72,7 @@ while ($data = mysqli_fetch_array($rs)){
 ?>
 <?php
     include_once("conectdb.php");
-    $sql = "SELECT * FROM `provinces` AS p INNER JOIN `regions` AS r ON p.r_id = r.r_id";
+    $sql = "SELECT * FROM `provinces` AS p INNER JOIN `r_regions` AS r ON p.r_id = r.r_id";
     $rs = mysqli_query($conn,$sql);
     while ($data = mysqli_fetch_array($rs)){
 
