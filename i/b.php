@@ -2,88 +2,85 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>จัดการข้อมูลจังหวัด - สุรีรัตน์ เกษกัน</title>
+    <title>สุรีรัตน์ เกษกัน (เตย)</title>
+    <style>
+        /* เพิ่ม CSS เล็กน้อยเพื่อให้หน้าตาใกล้เคียงรูปตัวอย่าง */
+        table { border-collapse: collapse; width: 80%; }
+        th, td { padding: 10px; text-align: left; }
+        .form-inline { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
 
 <h1>สุรีรัตน์ เกษกัน (เตย)</h1>
 
-<form method="post" action="" enctype="multipart/form-data">
-    ชื่อจังหวัด: <input type="text" name="pname" autofocus required><br><br>
-    รูปประจำจังหวัด: <input type="file" name="pimage" required><br><br>
-    ภาค: 
+<form method="post" action="" enctype="multipart/form-data" class="form-inline">
+    ชื่อจังหวัด <input type="text" name="pname" autofocus required> 
+    รูปภาพ <input type="file" name="pimage" required> 
+    ภาค 
     <select name="rid">
+        <option value="">-- เลือกภาค --</option>
         <?php
         include_once("conectdb.php");
-        $sql_reg = "SELECT * FROM regions";
-        $rs_reg = mysqli_query($conn, $sql_reg);
-        while ($data_reg = mysqli_fetch_array($rs_reg)){
+        $sql3 = "SELECT * FROM regions";
+        $rs3 = mysqli_query($conn, $sql3);
+        while ($data3 = mysqli_fetch_array($rs3)){
         ?>
-            <option value="<?php echo $data_reg['r_id']; ?>"><?php echo $data_reg['r_name']; ?></option>
+            <option value="<?php echo $data3['r_id']; ?>"><?php echo $data3['r_name']; ?></option>
         <?php } ?>
     </select>
-    <br><br>
     <button type="submit" name="Submit">บันทึก</button>
 </form>
 
-<hr>
-
 <?php
-// ส่วนของการบันทึกข้อมูล
 if(isset($_POST['Submit'])){
+    include_once("conectdb.php");
     $pname = $_POST['pname'];
-    $rid = $_POST['rid'];
     $ext = pathinfo($_FILES['pimage']['name'], PATHINFO_EXTENSION);
+    $rid = $_POST['rid'];
     
-    // ตรวจสอบชื่อ Column ใน Table provinces ของคุณอีกครั้ง (p_name, p_ext, r_id)
-    $sql_insert = "INSERT INTO `provinces` (`p_id`, `p_name`, `p_ext`, `r_id`) VALUES (NULL, '{$pname}', '{$ext}', '{$rid}')";
+    // ตรวจสอบชื่อคอลัมน์ในฐานข้อมูลของคุณ (p_id, p_name, p_ext, r_id)
+    $sql2 = "INSERT INTO `provinces` VALUES (NULL, '{$pname}', '{$ext}', '{$rid}')";
+    mysqli_query($conn, $sql2) or die ("บันทึกข้อมูลไม่ได้: " . mysqli_error($conn));
+
+    $pid = mysqli_insert_id($conn);
+    // ตรวจสอบว่ามีโฟลเดอร์ชื่อ images อยู่จริง
+    move_uploaded_file($_FILES['pimage']['tmp_name'], "images/".$pid.".".$ext);
     
-    if(mysqli_query($conn, $sql_insert)){
-        $pid = mysqli_insert_id($conn);
-        // บันทึกไฟล์ลง Folder images/
-        move_uploaded_file($_FILES['pimage']['tmp_name'], "images/".$pid.".".$ext);
-        echo "<script>alert('บันทึกข้อมูลเรียบร้อย'); window.location='your_filename.php';</script>";
-    } else {
-        echo "เกิดข้อผิดพลาด: " . mysqli_error($conn);
-    }
+    // Refresh หน้าเพื่อให้ข้อมูลอัปเดต
+    echo "<script>window.location.href=window.location.href;</script>";
 }
 ?>
 
-<table border="1" width="80%">
-    <tr bgcolor="#f2f2f2">
-        <th>รหัสจังหวัด</th>
-        <th>ชื่อจังหวัด</th>
-        <th>ชื่อภาค</th>
-        <th>รูปจังหวัด</th>
-        <th>ลบ</th>
+<table border="1">
+    <tr bgcolor="#f9f9f9">
+        <th>Province ID</th>
+        <th>Province Name</th>
+        <th>Province Picture</th>
+        <th>Delete</th>
     </tr>
-    <?php
-    // ดึงข้อมูลจังหวัด Join กับ ภาค เพื่อเอาชื่อภาคมาโชว์
-    $sql_list = "SELECT p.*, r.r_name FROM `provinces` AS p 
-                 INNER JOIN `regions` AS r ON p.r_id = r.r_id 
-                 ORDER BY p.p_id DESC";
-    $rs_list = mysqli_query($conn, $sql_list);
-    
-    while ($row = mysqli_fetch_array($rs_list)){
-        $img_path = "images/" . $row['p_id'] . "." . $row['p_ext'];
-    ?>
+<?php
+    include_once("conectdb.php");
+    // ใช้ INNER JOIN เพื่อดึงชื่อภาคมาแสดง
+    $sql = "SELECT * FROM `provinces` AS p INNER JOIN `regions` AS r ON p.r_id = r.r_id ORDER BY p.p_id DESC";
+    $rs = mysqli_query($conn, $sql);
+    while ($data = mysqli_fetch_array($rs)){
+        $image_name = "images/" . $data['p_id'] . "." . $data['p_ext'];
+?>
     <tr>
-        <td align="center"><?php echo $row['p_id']; ?></td>
-        <td><?php echo $row['p_name']; ?></td>
-        <td><?php echo $row['r_name']; ?></td>
-        <td align="center">
-            <?php if(file_exists($img_path)){ ?>
-                <img src="<?php echo $img_path; ?>" width="100">
-            <?php } else { echo "ไม่มีรูป"; } ?>
+        <td><?php echo $data['p_id']; ?></td>
+        <td><?php echo $data['p_name']; ?></td>
+        <td>
+            <?php if(file_exists($image_name)){ ?>
+                <img src="<?php echo $image_name; ?>" width="150">
+            <?php } else { echo "ไม่มีรูปภาพ"; } ?>
         </td>
         <td align="center">
-            <a href="delete_province.php?id=<?php echo $row['p_id']; ?>&ext=<?php echo $row['p_ext'];?>" 
-               onClick="return confirm('ยืนยันการลบ?');">
-               ลบ
-            </a>
+            <a href="delete_province.php?id=<?php echo $data['p_id']; ?>&ext=<?php echo $data['p_ext'];?>" onClick="return confirm('ยืนยันการลบ?');">
+                <img src="img/delete_icon.png" width="30" alt="ลบ"> </a>
         </td>
     </tr>
-    <?php } ?>
+<?php } ?>
 </table>
 
 </body>
