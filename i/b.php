@@ -16,8 +16,7 @@
     <select name="rid">
     <?php
     include_once("conectdb.php");
-    // แก้ไขชื่อตารางเป็น r_regions
-    $sql3 = "SELECT * FROM r_regions"; 
+    $sql3 = "SELECT * FROM regions"; 
     $rs3 = mysqli_query($conn, $sql3);
     while ($data3 = mysqli_fetch_array($rs3)){
     ?>
@@ -60,7 +59,7 @@ if(isset($_POST['Submit'])){
 <?php
     include_once("conectdb.php");
     // Join กับตาราง r_regions
-    $sql = "SELECT * FROM `provinces` AS p INNER JOIN `r_regions` AS r ON p.r_id = r.r_id ORDER BY p.p_id DESC";
+    $sql = "SELECT * FROM `provinces` AS p INNER JOIN `regions` AS r ON p.r_id = r.r_id ORDER BY p.p_id DESC";
     $rs = mysqli_query($conn, $sql);
     while ($data = mysqli_fetch_array($rs)){
 ?>
