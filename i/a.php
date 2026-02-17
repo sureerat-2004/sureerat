@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ปรียานนท์ กรุตนิด (มินนี่)</title>
+<title>สุรีรัตน์ เกษกัน (เตย)</title>
 </head>
 
 <body>
 
-<h1>งาน i -- ปรียานนท์ กรุตนิด (มินนี่)</h1>
+<h1>งาน i -- สุรีรัตน์ เกษกัน (เตย)</h1>
 <form method="post" action="">
     ชื่อภาค <input type="text" name="rname" autofocus required>
     <button type="submit" name="Submit">บันทึก</button>
