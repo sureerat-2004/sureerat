@@ -29,9 +29,14 @@ while ($data3 = mysqli_fetch_array($rs3)){
 <?php
 if(isset($_POST['Submit'])){
     include_once("connectdb.php");
-    $rname = $_POST['rname'];
-    $sql2= "INSERT INTO `r_regions` (`r_id`, `r_name`) VALUES (NULL, '{$rname}')";
+    $rname = $_POST['pname'];
+    $ext = pathinfo($_FILES['pimage']['name'],PATHINFO_EXTENSION);
+    $rid = $_POST['rid'];
+
+    $sql2= "INSERT INTO `r_regions` (`r_id`, `r_name`) VALUES (NULL,'{$pname}' ,'{$ext}','{$rid}')";
     mysqli_query($conn, $sql2) or die ('เพิ่มข้อมูลไม่ได้');
+    $qid = mysqli_insert_id($conn);
+    copy($_FILES['pimage']['tmp_name'],"images/".$qid.".".$ext);
 }
 ?>
 <table border="1">
