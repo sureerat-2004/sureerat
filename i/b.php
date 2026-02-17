@@ -9,9 +9,21 @@
 
 <h1>งาน i --สุรีรัตน์ เกษกัน (เตย)</h1>
 
-<form method="post" action="">
-    ชื่อภาค <input type="text" name="rname" autofocus required>
+<form method="post" action="" enctype="mulipart/form-data">
+    ชื่อจังหวัด <input type="text" name="rname" autofocus required><br> รูปภาพ <input type="file" name="pimage" requird><br>
     <button type="submit" name="Submit">บันทึก</button>
+
+    ภาค
+    <select name="rid">
+    <?php
+include_once("connectdb.php");
+$sql3 = "SELECT * FROM `r_regions`";
+$rs3 = mysqli_query($conn, $sql3);
+while ($data3 = mysqli_fetch_array($rs3)){
+?>
+        <option value="<td><?php echo $data3['r_id'];?></td>"><?php echo $data3['r_name'];?></option>
+<?php } ?>
+    </select>
 </form><br><br>
 
 <?php
