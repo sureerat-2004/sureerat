@@ -65,9 +65,7 @@ if(isset($_POST['Submit'])){
     </tr>
 <?php
     // ดึงข้อมูลโดยการ Join ตาราง provinces กับ regions
-    $sql = "SELECT p.*, r.r_name FROM `provinces` AS p 
-            INNER JOIN `regions` AS r ON p.r_id = r.r_id 
-            ORDER BY p.p_id DESC";
+    $sql = "SELECT p.*, r.r_name FROM `provinces` AS p LEFT JOIN `regions` AS r ON p.r_id = r.r_id ORDER BY p.p_id DESC";
     $rs = mysqli_query($conn, $sql);
     
     // ตรวจสอบว่ามีข้อมูลไหม
