@@ -9,15 +9,7 @@
 
 <h1>งาน i --สุรีรัตน์ เกษกัน (เตย)</h1>
 
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
-<body>
 
-<h1>66010914015 ภาคภูมิ วรรณชัย (แมนนนน)</h1>
 
 <form method="post" action="" enctype="multipart/form-data">
     ชื่อจังหวัด<input type="text" name="pname" autofocus require><br>
