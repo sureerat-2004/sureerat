@@ -8,5 +8,42 @@
 <body>
 
 <h1>งาน i --สุรีรัตน์ เกษกัน (เตย)</h1>
+
+<form method="post" action="">
+    ชื่อภาค <input type="text" name="rname" autofocus required>
+    <button type="submit" name="Submit">บันทึก</button>
+</form><br><br>
+
+<?php
+if(isset($_POST['Submit'])){
+    include_once("connectdb.php");
+    $rname = $_POST['rname'];
+    $sql2= "INSERT INTO `r_regions` (`r_id`, `r_name`) VALUES (NULL, '{$rname}')";
+    mysqli_query($conn, $sql2) or die ('เพิ่มข้อมู,ไม่ได้');
+}
+?>
+<table border="1">
+    <tr>
+        <th>รหัสภาค</th>
+        <th>ชื่อภาค</th>
+        <th>ลบ</th>
+    </tr>
+<?php
+include_once("connectdb.php");
+$sql = "SELECT * FROM `r_regions`";
+$rs = mysqli_query($conn, $sql);
+while ($data = mysqli_fetch_array($rs)){
+?>
+    <tr>
+        <td><?php echo $data['r_id'];?></td>
+        <td><?php echo $data['r_name'];?></td>
+        <td width="80" align="center"><a href="delete_region.php?id=><img src=<?php echo $data['r_id'];?> onClick="return confirm('ยืนยันการลบ?');">images/delete.jpg"width="20"></a></td>
+    </tr>
+<?php } ?>
+</tadle>
 </body>
 </html>
+ 
+<?php
+ mysqli_close($conn)
+?>
