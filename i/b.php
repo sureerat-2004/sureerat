@@ -1,5 +1,5 @@
 <?php
-include_once("conectdb.php"); // เชื่อมต่อฐานข้อมูลครั้งเดียวที่ด้านบนสุด
+include_once("conectdb.php"); // ตรวจสอบชื่อไฟล์นี้ให้ดีว่ามี n กี่ตัว
 
 // ส่วนของการบันทึกข้อมูล
 if(isset($_POST['Submit'])){
@@ -15,8 +15,8 @@ if(isset($_POST['Submit'])){
     // อัปโหลดไฟล์ไปที่โฟลเดอร์ images/
     move_uploaded_file($_FILES['pimage']['tmp_name'], "images/".$pid.".".$ext);
     
-    // Refresh หน้าเพื่อให้ข้อมูลล่าสุดปรากฏ
-    echo "<script>window.location.href='index.php';</script>";
+    // แก้ไข: เปลี่ยนจาก index.php เป็น b.php ตามชื่อไฟล์ที่คุณใช้จริง
+    echo "<script>window.location.href='b.php';</script>";
 }
 ?>
 
@@ -64,18 +64,17 @@ if(isset($_POST['Submit'])){
         <th>ลบ</th>
     </tr>
 <?php
-    // ดึงข้อมูลโดยการ Join ตาราง provinces กับ regions
+    // ใช้ LEFT JOIN เพื่อให้ข้อมูลโชว์แม้ยังไม่ได้เพิ่มชื่อภาคในตาราง regions
     $sql = "SELECT p.*, r.r_name FROM `provinces` AS p LEFT JOIN `regions` AS r ON p.r_id = r.r_id ORDER BY p.p_id DESC";
     $rs = mysqli_query($conn, $sql);
     
-    // ตรวจสอบว่ามีข้อมูลไหม
     if(mysqli_num_rows($rs) > 0){
         while ($data = mysqli_fetch_array($rs)){
 ?>
     <tr>
         <td><?php echo $data['p_id']; ?></td>
         <td><?php echo $data['p_name']; ?></td>
-        <td><?php echo $data['r_name']; ?></td>
+        <td><?php echo ($data['r_name'] ? $data['r_name'] : "ยังไม่ระบุภาค"); ?></td>
         <td>
             <?php if(!empty($data['p_ext'])){ ?>
                 <img src="images/<?php echo $data['p_id'].".".$data['p_ext']; ?>" width="100">
