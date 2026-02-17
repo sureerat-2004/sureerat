@@ -55,10 +55,10 @@ while ($data = mysqli_fetch_array($rs)){
 
 ?>
 <?php
-include_once("connectdb.php");
-$sql = "SELECT * FROM `provinces`AS p INNER JOIN `regions` AS r ON p.r_id=r.r_id";
-$rs = mysqli_query($conn, $sql);
-while ($data = mysqli_fetch_array($rs)){
+    include_once("connectdb.php");
+    $sql = "SELECT * FROM `provinces`AS p INNER JOIN `regions` AS r ON p.r_id=r.r_id";
+    $rs = mysqli_query($conn, $sql);
+    while ($data = mysqli_fetch_array($rs)){
 ?>
     <tr>
         <td><?php echo $data['p_id'];?></td>
