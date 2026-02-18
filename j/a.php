@@ -9,7 +9,6 @@
 <h1>66010914021 สุรีรัตน์ เกษกัน (เตย)</h1>
 
 <img src="1.image"width="500">
-<img src="2.images"width="500">
 
 
 </body>
