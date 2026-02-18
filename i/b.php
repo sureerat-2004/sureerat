@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>ปรียานนท์ กรุตนิด (มินนี่)</h1>
+<h1>สุรีรัตน์ เกษกัน (เตย)</h1>
 
 <form method="post" action="" enctype="multipart/form-data">
     ชื่อจังหวัด<input type="text" name="pname" autofocus required><br>
