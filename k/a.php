@@ -62,7 +62,7 @@
 
     <br>
 
-    <button class="btn btn-student" onclick="showImage('images/1.jpg')">เปิดรูปตัวเอง</button>
+    <button class="btn btn-student" onclick="showImage('images/3.jpg')">เปิดรูปตัวเอง</button>
     <button class="btn btn-teacher" onclick="showImage('images/2.jpg')">เปิดรูปอาจารย์</button>
 
     <div id="display-area">
