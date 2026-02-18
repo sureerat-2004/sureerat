@@ -55,6 +55,5 @@
             document.getElementById('display-image').src = imagePath;
         }
     </script>
-
 </body>
 </html>
