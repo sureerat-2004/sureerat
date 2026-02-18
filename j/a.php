@@ -16,7 +16,7 @@
 <body>
     <h1>66010914021 สุรีรัตน์ เกษกัน (เตย)</h1>
     
-    <img src="images/my_photo.jpg" alt="รูปภาพของสุรีรัตน์" class="profile-img">
+    <img src="images/my_photo.jpg" alt="1.images" class="profile-img">
 
 </body>
 </html>
