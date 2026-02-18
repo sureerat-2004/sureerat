@@ -7,9 +7,7 @@
 
 <body>
 <h1>66010914021 สุรีรัตน์ เกษกัน (เตย)</h1>
-
-<img src="1.image"width="500">
-
+<td width="80" align="center"><img src="images/delete.jpg" width="20"></td>
 
 </body>
 </html>
