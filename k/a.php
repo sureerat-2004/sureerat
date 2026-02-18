@@ -46,8 +46,8 @@
 
     <br>
 
-    <button type="button" class="btn-yes" onclick="changeImage('images/1.jpg')">นิสิต (รูปที่ 1)</button>
-    <button type="button" class="btn-no" onclick="changeImage('images/2.jpg')">อาจารย์ (รูปที่ 2)</button>
+    <button type="button" class="btn-yes" onclick="changeImage('1.jpg')">นิสิต (รูปที่ 1)</button>
+    <button type="button" class="btn-no" onclick="changeImage('2.jpg')">อาจารย์ (รูปที่ 2)</button>
 
     <script>
         // ฟังก์ชันสำหรับเปลี่ยนรูปภาพ
