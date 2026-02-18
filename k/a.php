@@ -56,8 +56,8 @@
 
     <div class="info-box">
         <h1>งาน K</h1>
-        <p><strong>66010914021:</strong> </p>
-        <p><strong>สุรีรัตน์ เกษกัน:</strong> </p>
+        <p><strong>66010914021</strong> </p>
+        <p><strong>สุรีรัตน์ เกษกัน</strong> </p>
     </div>
 
     <br>
