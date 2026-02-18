@@ -6,9 +6,11 @@
 </head>
 
 <body>
+
+<dr>
 <h1>งาน j 66010914021 สุรีรัตน์ เกษกัน (เตย)</h1>
 <dr>
-<img src="1.jpg"width="500">
+<img src="images/1.jpg"width="500">
 
 </body>
 </html>
